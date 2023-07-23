@@ -130,11 +130,10 @@ if bx:
     with text:
         st.markdown("""
             ### Design
-            - A
-            - B
-            - C
-                - D
-                - E
+            - Initially the Best of X was designed to allow the consumer to get all the details of different cars so they can compare other cars.
+            - But due to time constraint I had to change it to allow the consumer to get them what can be there dream cars by getting their needs.
+            - Consumers can get the details of the cars and get there cars according to their cars
+            
         """)
 
     text, image = st.columns([2, 1], gap="large")
@@ -143,12 +142,10 @@ if bx:
     with text:
         st.markdown("""
             ### Code
-            - A
-            - B
-            - C
-                - D
-                - E
-        """)
+            - I have no prior knowledge of streamlit but it was easy to use and allowed to easy implement my code.
+            - Because of this it was a great experirence.I wanted to make this so that consumer can get their dream car from a big database
+            - I beleive that with this people can get great cars according to their budget. Every car has it's own benefit.
+                            """)
     st.markdown("👈 Check out the final result in the sidebar!")
 
 if lp:
