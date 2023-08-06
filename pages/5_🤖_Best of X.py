@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly_express as px
 
 
 st.set_page_config(
@@ -38,7 +39,7 @@ sheet_name = "data"
 sheet_id = "1IN1YCm8DcLIgxY73ZmakN8m3SplYv8wb"
 url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
-df = pd.read_csv(url, dtype=str)
+df = pd.read_csv(url)
 
 def foo():
 
@@ -50,13 +51,31 @@ def foo():
     filtered_df = filtered_df[filtered_df["fuel_eff"] <= max(mileages_numeric)]
     has_min = filtered_df["starting_price"] >= min_amount
     has_max = filtered_df["ending_price"] <= max_amount
-    st.write(filtered_df[has_min & has_max])
+    data= filtered_df[has_min & has_max] 
 
-    st.area_chart(data=filtered_df)
+
+    fig = px.bar(data, x='car_name',y='fuel_eff')
+    fig.update_xaxes(title_text='Cars')  
+    fig.update_yaxes(title_text='Fuel Efficiency')  
+    st.plotly_chart(fig)
+   
+
+
+    fig = px.area(data, x='car_name',y= ['starting_price', 'ending_price'])
+    fig.update_xaxes(title_text='Cars')  
+    fig.update_yaxes(title_text='Prices')  
+    fig.update_annotations()
+    st.plotly_chart(fig)
+
+
+    fig = px.bar(data, x='car_name',y='max_power_bhp')
+    fig.update_xaxes(title_text='Cars')  
+    fig.update_yaxes(title_text='Maximum Power')  
+    st.plotly_chart(fig)
+
       
     
 
 if(value):
     foo()
-
 
